@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<% include ./layouts/head %>
+        <%if (errors.length > 0) { %>
+		    <script type='text/javascript'>$( document).ready(function() {$('#signup').click();});</script>
+        <% } %>
+	</head>
+	<body>
+	<!-- Header Started in home-->
+	<header>
+		<% include ./layouts/header %>
+	</header>
+	<!-- Header Ended in home-->
+	<!-- Main Started in Home-->
+	<!--Model for Register -->
+		<!-- Register Modal -->
+	<!-- Model for Registeration ends-->
+    <% include ./layouts/common %>
+
+	<main>
+			<div class="container">
+                <% include ./home/upcomingEvent %>
+                <% include ./home/events %>
+			<div class="row main">
+			</div>
+			
+		</div>
+	</main>
+	<!-- Main Ended in Home-->
+	<!-- Footer Added in Home-->
+	<footer>
+		<% include ./layouts/footer %>
+	</footer>
+	<!-- Footer Ended in Home-->
+	</body>
+</html>

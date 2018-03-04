@@ -1,0 +1,28 @@
+{
+		"name": "Events",
+		"version": "1.0.0",
+		"description": "Simple Authentication System",
+		"main": "app.js",
+		"scripts": {
+				"test": "echo \"Error: no test specified\" && exit 1"
+		},
+		"author": "Aman kharbanda",
+		"license": "ISC",
+		"dependencies": {
+				"bcryptjs": "*",
+				"body-parser": "*",
+				"connect-flash": "*",
+				"cookie-parser": "^1.4.1",
+				"ejs": "*",
+				"express": "*",
+				"express-messages": "*",
+				"express-session": "*",
+				"express-validator": "*",
+				"mongodb": "*",
+				"mongoose": "*",
+				"passport": "*",
+				"passport-http": "*",
+				"passport-local": "*",
+				"request": "^2.83.0"
+		}
+}
