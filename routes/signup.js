@@ -5,28 +5,25 @@ var User = require('../model/User');
 
 router.post('/', function(req, res){
     console.log('Inside Post request');
-    var name = req.body.name;
-    var email = req.body.email;
-    var password = req.body.password;
-    var username = req.body.username;
-    var confirm = req.body.confirm;
 
-    console.log('name is ' + name);
+    console.log('User Email is ' + req.body.email);
 
     //Validations
 
-    req.checkBody('name', 'Name is required').notEmpty();
+    req.checkBody('firstName', 'First name is required').notEmpty();
+    req.checkBody('lastName', 'Last name is required').notEmpty();
+    req.checkBody('mobileNumber', 'Mobile number is required').notEmpty();
     req.checkBody('email', 'email is required').notEmpty();
     req.checkBody('email', 'email is required').isEmail();
     req.checkBody('password', 'password is required').notEmpty();
-    req.checkBody('username', 'username is required').notEmpty();
     req.checkBody('confirm', 'Confirm Password is matching').equals(req.body.password);
 
     var userData = {
         firstName:req.body.firstName,
         lastName:req.body.lastName,
         email:req.body.email,
-        password:req.body.password
+        password:req.body.password,
+        mobileNumber:req.body.mobileNumber
     }
 
     var errors = req.validationErrors();
@@ -39,25 +36,14 @@ router.post('/', function(req, res){
 
     }else{
         console.log('Inside else part to save to user');
-        var newUser = new User({
-            name : name,
-            email : email,
-            password : password,
-            username : username
 
-        });
-
-        User.createUser(newUser, function(err, user){
-            if(err){
-                throw err;
+        request.post({url:'http://localhost:5000/registerUser', json:userData, }, function callback(error, response, body){
+            if (error){
+                console.log(error);
+                throw error;
             }
-
-            console.log(user);
-
-            console.log('Successfully else part to save to user');
-            req.flash('success_msg', 'Your are now registered, Can login now');
-
-            res.redirect('/');
+            console.log("logged in user" + JSON.stringify(body));
+            res.redirect("/")
         });
 
     }
